@@ -21,7 +21,8 @@ RUN apt-get update && apt-get install -y \
     nano \
     openssl \
     ssl-cert \
-    wget
+    wget \
+    vim
 
 RUN rm -rf /var/lib/apt/lists/*
 
