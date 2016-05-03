@@ -1,0 +1,31 @@
+version: '2'
+services:
+    app:
+        image: emnili/base
+        volumes:
+            - .:/var/www/html
+    php:
+        image: akilli/php
+        ports:
+            - "4000:4000"
+            - "8000:8000"
+            - "9000:9000"
+        volumes_from:
+            - app
+    apache:               
+        image: php:5.6-apache
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - /data_1/www:/srv
+            - ./default.conf:/etc/apache2/sites-enabled/000-default.conf 
+    postgres:       
+        image: postgres
+        ports:
+            - "5432:5432"
+
+    
+    
+            
+           
