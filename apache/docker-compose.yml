@@ -3,9 +3,9 @@ services:
     app:
         image: emnili/base
         volumes:
-            - .:/var/www/html
+            - /data_1/www:/srv
     php:
-        image: akilli/php
+        image: emnili/php
         ports:
             - "4000:4000"
             - "8000:8000"
@@ -13,17 +13,24 @@ services:
         volumes_from:
             - app
     apache:               
-        image: php:5.6-apache
+        image: emnili/apache
         ports:
             - "80:80"
             - "443:443"
+        volumes_from:
+            - app
         volumes:
-            - /data_1/www:/srv
-            - ./default.conf:/etc/apache2/sites-enabled/000-default.conf 
-    postgres:       
-        image: postgres
+            - ./own-default.conf:/etc/apache2/sites-enabled/000-own-default.conf
+    postgresdata:
+        image: emnili/base
+        volumes:
+            - /data_1/postgres:/var/lib/postgresql
+    postgres:
+        image: akilli/postgres
         ports:
             - "5432:5432"
+        volumes_from:
+            - postgresdata
 
     
     
