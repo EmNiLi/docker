@@ -1,4 +1,6 @@
 version: '2'
+volumes:
+    postgresdata: {}
 services:
     app:
         image: emnili/base
@@ -21,16 +23,12 @@ services:
             - app
         volumes:
             - ./own-default.conf:/etc/apache2/sites-enabled/000-own-default.conf
-    postgresdata:
-        image: emnili/base
-        volumes:
-            - /data_1/postgres:/var/lib/postgresql
     postgres:
         image: akilli/postgres
         ports:
             - "5432:5432"
-        volumes_from:
-            - postgresdata
+        volumes:
+            - postgresdata:/var/lib/postgresql
 
     
     
