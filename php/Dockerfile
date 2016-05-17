@@ -30,7 +30,9 @@ RUN apt-get update && apt-get install -y \
     php5.6-imap \
     php5.6-intl \
     php5.6-json \
+    php5.6-ldap \
     php5.6-mysql \
+    php5.6-mbstring \
     php5.6-pgsql \
     php5.6-phpdbg \
     php5.6-readline \
