@@ -1,0 +1,36 @@
+version: '2'
+volumes:
+    postgresdata: {}
+services:
+    app:
+        image: buffy-base
+        volumes:
+            - /data_1/www:/srv
+    php:
+        image: buffy-php
+        ports:
+            - "4000:4000"
+            - "8000:8000"
+            - "9000:9000"
+        volumes_from:
+            - app
+    apache:               
+        image: buffy-apache
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes_from:
+            - app
+        volumes:
+            - ./own-default.conf:/etc/apache2/sites-enabled/000-own-default.conf
+    postgres:
+        image: buffy-postgres
+        ports:
+            - "5432:5432"
+        volumes:
+            - postgresdata:/var/lib/postgresql
+
+    
+    
+            
+           
