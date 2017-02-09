@@ -22,7 +22,7 @@ services:
         volumes_from:
             - app
         volumes:
-            - ./own-default.conf:/etc/apache2/sites-enabled/000-own-default.conf
+            - ../apache/own-default.conf:/etc/apache2/sites-enabled/000-own-default.conf
     postgres:
         image: buffy-postgres
         ports:
