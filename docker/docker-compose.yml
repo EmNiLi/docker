@@ -1,6 +1,7 @@
 version: '2'
 volumes:
     postgresdata: {}
+    mysqldata: {}
 services:
     app:
         image: buffy-base
@@ -29,8 +30,17 @@ services:
             - "5432:5432"
         volumes:
             - postgresdata:/var/lib/postgresql
-
-    
-    
-            
+#    mysql:
+#        image: buffy-mysql
+#        ports:
+#            - "3306:3306"
+#        volumes:
+#            - mysqldata:/var/lib/mysql
+#        environment:
+#            MYSQL_DATABASE: Medical
+#            MYSQL_ROOT_PASSWORD: root
+#            STARTUP_SQL: data_sql
+#    cron:
+#        image: buffy-cron
+#        command: /app/files/tuwas.sh
            
