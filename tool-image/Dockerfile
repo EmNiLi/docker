@@ -4,7 +4,7 @@ LABEL maintainer="Guenther Morhart"
 
 
 #
-# Setup
+# Setups
 #
 RUN apk add --update \
     rsync \
