@@ -1,10 +1,11 @@
 FROM alpine:edge
 
-MAINTAINER Guenther Morhart
+LABEL maintainer="Guenther Morhart"
 
 
-
-# coments
-
+#
+# Setup
+#
 RUN apk add --update \
-    rsync
+    rsync \
+    duplicity
